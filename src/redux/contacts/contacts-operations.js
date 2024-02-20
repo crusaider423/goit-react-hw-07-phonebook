@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import * as Api from '../../api/api';
+import * as Api from '../../api/api-contacts';
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
@@ -26,14 +26,14 @@ export const addContact = createAsyncThunk(
   },
   //третім параметром можна передати обєкт з додатковими налаштуваннями:
   {
-    condition: ({ name, phone }, thunkAPI) => {
+    condition: ({ name, number }, thunkAPI) => {
       const { contacts } = thunkAPI.getState();
       const normalizedName = name.toLowerCase();
-      const normalizedNumber = phone.toLowerCase();
+      const normalizedNumber = number.toLowerCase();
       const IsDublicate = contacts.items.some(
-        ({ name, phone }) =>
+        ({ name, number }) =>
           name.toLowerCase() === normalizedName ||
-          phone.toLowerCase() === normalizedNumber
+          number.toLowerCase() === normalizedNumber
       );
       if (IsDublicate) {
         alert(`${name} is already in contacts`);

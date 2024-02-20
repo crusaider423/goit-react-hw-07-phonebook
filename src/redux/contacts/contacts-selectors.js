@@ -10,10 +10,10 @@ export const selectFilteredContacts = createSelector(
       return items;
     }
     const normalizedFilter = filter.toLowerCase().trim();
-    return items.filter(({ name, phone }) => {
+    return items.filter(({ name, number }) => {
       return (
         name.toLowerCase().includes(normalizedFilter) ||
-        phone.toLowerCase().includes(normalizedFilter)
+        number.toLowerCase().includes(normalizedFilter)
       );
     });
   }
