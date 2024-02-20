@@ -1,16 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { pending, rejected } from '../helper';
 import {
   fetchContacts,
   deleteContact,
   addContact,
 } from './contacts-operations';
-
-const pending = state => ({ ...state, isLoading: true });
-const rejected = (state, { payload }) => ({
-  ...state,
-  isLoading: false,
-  error: payload,
-});
 
 const contactsSlice = createSlice({
   name: 'contact',

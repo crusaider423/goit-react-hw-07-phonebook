@@ -7,14 +7,14 @@ export const ContactForm = ({ onSubmit }) => {
   const telId = nanoid();
 
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setPhone] = useState('');
 
   const handleChange = ({ target: { name, value } }) => {
-    name === 'name' ? setName(value) : name === 'phone' && setPhone(value);
+    name === 'name' ? setName(value) : name === 'number' && setPhone(value);
   };
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmit({ name, phone });
+    onSubmit({ name, number });
     setName('');
     setPhone('');
   };
@@ -37,8 +37,8 @@ export const ContactForm = ({ onSubmit }) => {
         <label htmlFor={telId}>Number</label>
         <input
           type="tel"
-          name="phone"
-          value={phone}
+          name="number"
+          value={number}
           required
           id={telId}
           placeholder="phone number"
